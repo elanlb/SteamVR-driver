@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/elan/Documents/Development/SteamVR-driver/src/DriverFactory.cpp
+driverFactory.h
+/Users/elan/Documents/Development/SteamVR-driver/src/driverFactory.h
+
+/Users/elan/Documents/Development/SteamVR-driver/src/ServerDriver.cpp
+serverDriver.h
+/Users/elan/Documents/Development/SteamVR-driver/src/serverDriver.h
+
+/Users/elan/Documents/Development/SteamVR-driver/src/WatchdogDriver.cpp
+watchdogDriver.h
+/Users/elan/Documents/Development/SteamVR-driver/src/watchdogDriver.h
+
+/Users/elan/Documents/Development/SteamVR-driver/src/driverFactory.h
+OpenVR/openvr_driver.h
+-
+serverDriver.h
+/Users/elan/Documents/Development/SteamVR-driver/src/serverDriver.h
+watchdogDriver.h
+/Users/elan/Documents/Development/SteamVR-driver/src/watchdogDriver.h
+
+/Users/elan/Documents/Development/SteamVR-driver/src/serverDriver.h
+OpenVR/openvr_driver.h
+-
+
+/Users/elan/Documents/Development/SteamVR-driver/src/watchdogDriver.h
+OpenVR/openvr_driver.h
+-
+
