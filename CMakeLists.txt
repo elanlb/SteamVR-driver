@@ -13,6 +13,7 @@ add_library(${PROJECT_NAME} SHARED
     src/DriverFactory.cpp
     src/ServerDriver.cpp
     src/WatchdogDriver.cpp
+    src/DummyHMD.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} ${OPENVR_LIBRARIES})

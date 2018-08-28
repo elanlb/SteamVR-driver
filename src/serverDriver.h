@@ -1,7 +1,11 @@
 #pragma once
 
+#include <math.h>
+#include <chrono>
 #include <OpenVR/openvr_driver.h>
-using namespace vr;
+using namespace std::chrono;
+
+#include "dummyHMD.h"
 
 class ServerDriver : public IServerTrackedDeviceProvider
 {
@@ -10,7 +14,7 @@ public:
     
     ~ServerDriver();
     
-    EVRInitError Init(IVRDriverContext *pDriverContext) override;
+    vr::EVRInitError Init(vr::IVRDriverContext *pDriverContext) override;
 
     void Cleanup() override;
 
@@ -26,4 +30,6 @@ public:
 
 private:
     static const char* const interfaces_[];
+
+    DummyHMD hmd;
 };
