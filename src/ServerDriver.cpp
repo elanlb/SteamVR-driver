@@ -30,7 +30,7 @@ EVRInitError ServerDriver::Init (IVRDriverContext *pDriverContext)
     VRControllerState_t testState;
     testState.ulButtonPressed = 0;
 
-    hmd = DummyHMD("dummyHmd", testPose);
+    hmd = RemoteDevice("dummyHmd", testPose);
     VRServerDriverHost() -> TrackedDeviceAdded("dummyHmd", TrackedDeviceClass_HMD, &hmd);
 
     return EVRInitError::VRInitError_None;
@@ -41,7 +41,7 @@ void ServerDriver::Cleanup ()
     // TODO
 }
 
-const char * const *ServerDriver::GetInterfaceVersions ()
+const char* const *ServerDriver::GetInterfaceVersions ()
 {
     return k_InterfaceVersions;
 }

@@ -4,16 +4,13 @@ HMD_DLL_EXPORT void *HmdDriverFactory (const char *pInterfaceName, int *pReturnC
 {
     if (0 == strcmp(IServerTrackedDeviceProvider_Version, pInterfaceName))
     {
-        // success message!
-        system("osascript -e 'tell app \"iTerm2\" to display dialog \"Hello\"'");
-        
         // this was generated in driverFactory.h
         return &serverDriver;
     }
     if (0 == strcmp(IVRWatchdogProvider_Version, pInterfaceName))
     {
-        return 0;
-        //return &g_watchdogDriverNull;
+        // also generated in driverFactory.h
+        return &watchdogDriver;
     }
     
     if (pReturnCode)

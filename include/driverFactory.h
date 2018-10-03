@@ -1,6 +1,6 @@
 #pragma once
 
-#include <OpenVR/openvr_driver.h>
+#include <openvr_driver.h>
 using namespace vr;
 
 #include "serverDriver.h"

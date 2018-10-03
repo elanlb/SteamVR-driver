@@ -1,14 +1,14 @@
 #pragma once
 
-#include <OpenVR/openvr_driver.h>
+#include <openvr_driver.h>
 using namespace vr;
 
-class DummyHMD : public ITrackedDeviceServerDriver, public IVRDisplayComponent
+class RemoteDevice : public ITrackedDeviceServerDriver, public IVRDisplayComponent
 {
 public:
-    DummyHMD();
-    DummyHMD(std::string serial, DriverPose_t initialPose);
-    ~DummyHMD();
+    RemoteDevice();
+    RemoteDevice(std::string serial, DriverPose_t initialPose);
+    ~RemoteDevice();
     virtual void updateHMDPose(DriverPose_t newPose);
     virtual uint32_t getObjectID();
 

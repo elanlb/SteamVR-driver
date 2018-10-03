@@ -1,29 +1,29 @@
-#include "dummyHMD.h"
+#include "remoteDevice.h"
 
-DummyHMD::DummyHMD ()
+RemoteDevice::RemoteDevice ()
 {
 }
 
-DummyHMD::DummyHMD (std::string serial, DriverPose_t initialPose):
+RemoteDevice::RemoteDevice (std::string serial, DriverPose_t initialPose):
     serial_(serial),
     hmd_pose_(initialPose)
 {
 }
 
-DummyHMD::~DummyHMD ()
+RemoteDevice::~RemoteDevice ()
 {
 }
 
-void DummyHMD::updateHMDPose (DriverPose_t newPose)
+void RemoteDevice::updateHMDPose (DriverPose_t newPose)
 {
     hmd_pose_ = newPose;
 }
 
-uint32_t DummyHMD::getObjectID () {
+uint32_t RemoteDevice::getObjectID () {
     return object_id_;
 }
 
-EVRInitError DummyHMD::Activate (uint32_t unObjectId)
+EVRInitError RemoteDevice::Activate (uint32_t unObjectId)
 {
     object_id_ = unObjectId;
     PropertyContainerHandle_t propHandle = VRProperties() ->
@@ -44,15 +44,15 @@ EVRInitError DummyHMD::Activate (uint32_t unObjectId)
     return EVRInitError::VRInitError_None;
 }
 
-void DummyHMD::Deactivate ()
+void RemoteDevice::Deactivate ()
 {
 }
 
-void DummyHMD::EnterStandby ()
+void RemoteDevice::EnterStandby ()
 {
 }
 
-void *DummyHMD::GetComponent (const char *pchComponentNameAndVersion)
+void *RemoteDevice::GetComponent (const char *pchComponentNameAndVersion)
 {
     if (0 == strcmp(pchComponentNameAndVersion, IVRDisplayComponent_Version))
     {
@@ -62,7 +62,7 @@ void *DummyHMD::GetComponent (const char *pchComponentNameAndVersion)
     return NULL;
 }
 
-void DummyHMD::DebugRequest (const char *pchRequest, char *pchResponseBuffer, uint32_t unResponseBufferSize)
+void RemoteDevice::DebugRequest (const char *pchRequest, char *pchResponseBuffer, uint32_t unResponseBufferSize)
 {
     if (unResponseBufferSize >= 1)
     {
@@ -70,12 +70,12 @@ void DummyHMD::DebugRequest (const char *pchRequest, char *pchResponseBuffer, ui
     }
 }
 
-DriverPose_t DummyHMD::GetPose ()
+DriverPose_t RemoteDevice::GetPose ()
 {
     return hmd_pose_;
 }
 
-void DummyHMD::GetWindowBounds(int32_t *pnX, int32_t *pnY, uint32_t *pnWidth, uint32_t *pnHeight)
+void RemoteDevice::GetWindowBounds(int32_t *pnX, int32_t *pnY, uint32_t *pnWidth, uint32_t *pnHeight)
 {
     *pnX = window_x_;
     *pnY = window_y_;
@@ -83,23 +83,23 @@ void DummyHMD::GetWindowBounds(int32_t *pnX, int32_t *pnY, uint32_t *pnWidth, ui
     *pnHeight = window_height_;
 }
 
-bool DummyHMD::IsDisplayOnDesktop ()
+bool RemoteDevice::IsDisplayOnDesktop ()
 {
     return true;
 }
 
-bool DummyHMD::IsDisplayRealDisplay ()
+bool RemoteDevice::IsDisplayRealDisplay ()
 {
     return false;
 }
 
-void DummyHMD::GetRecommendedRenderTargetSize(uint32_t *pnWidth, uint32_t *pnHeight)
+void RemoteDevice::GetRecommendedRenderTargetSize(uint32_t *pnWidth, uint32_t *pnHeight)
 {
     *pnWidth = window_width_;
     *pnHeight = window_height_;
 }
 
-void DummyHMD::GetEyeOutputViewport(EVREye eEye, uint32_t *pnX, uint32_t *pnY, uint32_t *pnWidth, uint32_t *pnHeight)
+void RemoteDevice::GetEyeOutputViewport(EVREye eEye, uint32_t *pnX, uint32_t *pnY, uint32_t *pnWidth, uint32_t *pnHeight)
 {
     *pnY = 0;
     *pnWidth = (window_width_ / 2) - separation_;
@@ -115,7 +115,7 @@ void DummyHMD::GetEyeOutputViewport(EVREye eEye, uint32_t *pnX, uint32_t *pnY, u
     }
 }
 
-void DummyHMD::GetProjectionRaw(EVREye eEye, float *pfLeft, float *pfRight, float *pfTop, float *pfBottom)
+void RemoteDevice::GetProjectionRaw(EVREye eEye, float *pfLeft, float *pfRight, float *pfTop, float *pfBottom)
 {
     *pfLeft = -1.0;
     *pfRight = 1.0;
@@ -123,7 +123,7 @@ void DummyHMD::GetProjectionRaw(EVREye eEye, float *pfLeft, float *pfRight, floa
     *pfBottom = 1.0;
 }
 
-DistortionCoordinates_t DummyHMD::ComputeDistortion(EVREye eEye, float fU, float fV)
+DistortionCoordinates_t RemoteDevice::ComputeDistortion(EVREye eEye, float fU, float fV)
 {
     DistortionCoordinates_t coordinates{};
     coordinates.rfBlue[0] = fU;
